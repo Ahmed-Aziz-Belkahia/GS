@@ -43,6 +43,7 @@ class ContactInfo(models.Model):
     address = models.TextField()
     phone = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
+    about = models.TextField(blank=True, null=True)
 
 class FAQ(models.Model):
     question = models.CharField(max_length=255)
