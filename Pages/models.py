@@ -33,6 +33,7 @@ class Project(models.Model):
 class Member(models.Model):
     name = models.CharField(max_length=100)
     role = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="member", blank=True, null=True)
 
 class Social(models.Model):
     member = models.ForeignKey(Member, on_delete=models.CASCADE, related_name="socials")

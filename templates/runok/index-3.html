@@ -336,7 +336,7 @@
                                     <div class="project-box">
                                         <div class="project-thumb">
                                             <div class="shape"></div>
-                                            <img src="{{project.image.url}}" alt="project">
+                                            {% if project.image %}<img src="{{project.image.url}}" alt="project">{% endif %}
                                         </div>
                                         <a href="{% url "project" url_title=project.url_title %}" class="project-btn"><i class="fa-light fa-arrow-right-long"></i></a>
                                         <div class="project-content">
@@ -428,7 +428,7 @@
                         <div class="team-item team-item-2">
                             <div class="team-thumb">
                                 <div class="gradient-color"></div>
-                                <img src="{% static 'assets\img\team\muslim.png' %}" alt="team">
+                                {% if member.image %}<img src="{{member.image.url}}" alt="team">{% endif %}
                             </div>
                             <ul class="team-social-2">
                                 {% comment %} <li class="facebook">
@@ -440,11 +440,13 @@
                                 <li class="twitter">
                                     <a href="#"><i class="fab fa-twitter"></i></a>
                                 </li> {% endcomment %}
-                                {% for social in member.socials %}
-                                <li class="{{social.title}}">
-                                    <a href="{{social.url}}"><i class="fab fa-{{social.title}}"></i></a>
-                                </li>
-                                {% endfor %}
+                                {% if member.socials %}
+                                    {% for social in member.socials.all %}
+                                    <li class="{{social.title}}">
+                                        <a href="{{social.url}}"><i class="fab fa-{{social.title}}"></i></a>
+                                    </li>
+                                    {% endfor %}
+                                {% endif %}
                             </ul>
                             <div class="team-content">
                                 <h3 class="title"><a >{{member.name}}</a></h3>
@@ -672,11 +674,11 @@
                             {% for q in faqs %}
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading{{q.id}}">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{q.id}}" aria-expanded="true" aria-controls="collapse{{q.id}}">
-                                    01. {{q.question}}?
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ q.id }}" aria-expanded="{% if forloop.counter == 1 %}true{% else %}false{% endif %}" aria-controls="collapse{{ q.id }}">
+                                        01. {{q.question}}?
                                 </button>
                                 </h2>
-                                <div id="collapse{{q.id}}" class="accordion-collapse collapse show" aria-labelledby="heading{{q.id}}" data-bs-parent="#accordionExample">
+                                <div id="collapse{{q.id}}" class="accordion-collapse collapse {% if forloop.counter == 1 %}show{% endif %}" aria-labelledby="heading{{q.id}}" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p>{{q.answer}}</p>
                                     </div>

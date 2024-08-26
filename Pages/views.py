@@ -13,7 +13,7 @@ def index0(request, *args, **kwargs):
         ContactSubmission.objects.create(first_name=request.POST.get("fullname"), last_name=request.POST.get("lastname"), email=request.POST.get("email"), phone=request.POST.get("phone"), message=request.POST.get("message"))
     services = Service.objects.all()
     projects = Project.objects.all()
-    return render(request, "runok/index-3.html", {"services": services, "projects": projects, "info": info, "faqs": faqs})
+    return render(request, "runok/index-3.html", {"services": services, "clients": clients, "projects": projects, "info": info, "faqs": faqs, "members": members})
 
 def contactView(request, *args, **kwargs):
     info = ContactInfo.objects.first()
