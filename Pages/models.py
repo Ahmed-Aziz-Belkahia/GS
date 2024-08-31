@@ -38,6 +38,7 @@ class Member(models.Model):
 class Social(models.Model):
     member = models.ForeignKey(Member, on_delete=models.CASCADE, related_name="socials")
     title = models.CharField(max_length=50)
+    icon = models.ImageField(upload_to="img", blank=True, null=True)
     url = models.URLField(max_length=200)
 
 class ContactInfo(models.Model):

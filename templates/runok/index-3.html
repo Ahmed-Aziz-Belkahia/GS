@@ -443,7 +443,7 @@
                                 {% if member.socials %}
                                     {% for social in member.socials.all %}
                                     <li class="{{social.title}}">
-                                        <a href="{{social.url}}"><i class="fab fa-{{social.title}}"></i></a>
+                                        <a href="{{social.url}}">{% if social.icon %}<img src="{{social.icon.url}}" alt="">{% endif %}</a>
                                     </li>
                                     {% endfor %}
                                 {% endif %}
@@ -582,7 +582,7 @@
                                     <i class="fa-light fa-location-dot"></i>
                                 </div>
                                 <div class="content">
-                                    <h4 class="title">Our Address</h4>
+                                    <h4 class="title">Social Media</h4>
                                     <p>{{info.address}}</p>
                                 </div>
                             </div>
