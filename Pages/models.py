@@ -63,3 +63,7 @@ class ContactSubmission(models.Model):
     email = models.CharField(max_length=120)
     phone = models.CharField(max_length=50)
     message = models.TextField()
+
+class ClientLogo(models.Model):
+    alt = models.CharField(max_length=50)
+    img =  models.ImageField(upload_to="cl")

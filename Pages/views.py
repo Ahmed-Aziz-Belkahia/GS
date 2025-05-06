@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from Pages.models import FAQ, Client, ContactInfo, ContactSubmission, Member, Service, Project
+from Pages.models import FAQ, Client, ClientLogo, ContactInfo, ContactSubmission, Member, Service, Project
 
 # Create your views here.
 
@@ -8,12 +8,13 @@ def index0(request, *args, **kwargs):
     faqs = FAQ.objects.all()
     info = ContactInfo.objects.first()
     clients = Client.objects.all()[:3]
+    clients_logo = ClientLogo.objects.all()
     members = Member.objects.all()
     if request.method == 'POST':
         ContactSubmission.objects.create(first_name=request.POST.get("fullname"), last_name=request.POST.get("lastname"), email=request.POST.get("email"), phone=request.POST.get("phone"), message=request.POST.get("message"))
     services = Service.objects.all()
     projects = Project.objects.all()
-    return render(request, "runok/index-3.html", {"services": services, "clients": clients, "projects": projects, "info": info, "faqs": faqs, "members": members})
+    return render(request, "runok/index-3.html", {"services": services, "clients": clients, "projects": projects, "info": info, "faqs": faqs, "members": members, "clients_logo": clients_logo})
 
 def contactView(request, *args, **kwargs):
     info = ContactInfo.objects.first()

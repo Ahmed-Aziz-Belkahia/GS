@@ -20,7 +20,7 @@
                 <div style="display: flex;justify-content: flex-start;align-items: center;">
                     <h1 class="title anim-text"><br>Into</h1>
                     {% comment %} <div style="width: 120px;height: 144px;display: flex;justify-content: center;padding-top: .6rem;">
-                        <img style="width: 110px;height: 110px;" src="{% static 'assets/img/favicon.png' %}" alt="GS solutions web dev agency">
+                        <img style="width: 110px;height: 110px;" src="{% static 'assets/img/favicon.png' %}" alt="Opulent Solutions web dev agency">
                     </div> {% endcomment %}
                     <h1 class="title anim-text"><br>Reality</h1>
                 </div>
@@ -39,12 +39,14 @@
             </div>
             <div class="sponsor-carousel-2 swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="sponsor-item text-center">
-                            <a href="https://aromakingromania.ro/"><img src="{% static 'assets\img\logo\aroma.webp' %}" alt="Aroma king"></a>
+                    {% for cl in clients_logo %}
+                        <div class="swiper-slide">
+                            <div class="sponsor-item text-center">
+                                <a href="https://aromakingromania.ro/"><img src="{{cl.img.url}}" alt="{{cl.alt}}"></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
+                    {% endfor %}
+                    {% comment %}<div class="swiper-slide">
                         <div class="sponsor-item text-center">
                             <a href="https://www.am-sl.pl/"><img src="{% static 'assets\img\logo\am.webp' %}" alt="a&m romania"></a>
                         </div>
@@ -56,10 +58,10 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="sponsor-item text-center">
-                            <a href="https://GS solutions.tn"><img src="{% static 'assets\img\favicon.png' %}" alt="GS solutions agency"></a>
+                            <a href="https://Opulent Solutions.tn"><img src="{% static 'assets\img\favicon.png' %}" alt="Opulent Solutions agency"></a>
                         </div>
                     </div>
-                    {% comment %} <div class="swiper-slide">
+                     <div class="swiper-slide">
                         <div class="sponsor-item text-center">
                             <a href="https://snapstore.tn"><img src="{% static 'assets\img\logo\snapstore.png' %}" alt="snapstore tunisia"></a>
                         </div>
@@ -78,7 +80,7 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="about-img-wrap-4">
                         <div class="about-img img-1 reveal">
-                            <img src="{% static 'assets\img\images\piotr1.webp' %}" alt="img">
+                            <img src="{% static 'assets\img\images\first.png' %}" alt="img">
                         </div>
                         <div class="about-img img-2 reveal">
                             <img src="{% static 'assets\img\images\piortandjcob.webp' %}" alt="img">
@@ -312,7 +314,7 @@
 
     <section class="project-section pt-130 overflow-hidden">
         <div class="container">
-            <div class="project-top heading-space">
+            <div style="max-width:auto !important;" class="project-top heading-space">
                 <div class="section-heading heading-3 mb-0">
                     <h4 class="sub-heading after-none" data-text-animation="fade-in" data-duration="1.5">Recent Works Gallery</h4>
                     <h2 class="section-title" data-text-animation data-split="word" data-duration="1">our recent project gallery</h2>
